@@ -159,24 +159,20 @@ const FormItem: FC<IFormItemProps> = ({
                 value: form.values[name],
                 onValueChange: (value: boolean) => {
                   form.setFieldValue(name, value);
-                  console.log(value);
                 },
                 onSelect: (value: string) => {
-                  console.log(value);
                   form.setFieldValue(name, value);
                 },
                 onChange: (value: any) => {
                   form.setFieldValue(name, value);
                 },
                 onSelectedItemsChange: (value: any) => {
-                  console.log(value);
                   form.setFieldValue(name, value);
                 },
 
                 onBlur: () => {
                   form.setFieldTouched(name, true);
                 },
-                // value: field.value,
               })}
               <ErrorMessage name={name}>
                 {msg => <Text style={styles.errorText}>{msg}</Text>}

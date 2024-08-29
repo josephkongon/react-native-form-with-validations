@@ -12,7 +12,6 @@ import FormItem from './src/components/FormItems/FormItem.tsx';
 import FormInput from './src/components/FormItems/FormInput.tsx';
 import {FormSwitch} from './src/components/FormItems/FormSwitch.tsx';
 import FormDatePicker from './src/components/FormItems/FormDatePicker.tsx';
-// import {At, Key} from 'phosphor-react-native';
 import FormCheckbox from './src/components/FormItems/FormCheckbox.tsx';
 import FormRadioGroup from './src/components/FormItems/FormRadioGroup.tsx';
 import FormSlider from './src/components/FormItems/FormSlider.tsx';
@@ -96,6 +95,7 @@ function App(): React.JSX.Element {
 
           <FormItem name="radios">
             <FormRadioGroup
+              mode={'ios'}
               options={[
                 {label: 'Option 1', value: '1'},
                 {label: 'Option 2', value: '2'},

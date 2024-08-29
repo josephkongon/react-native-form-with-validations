@@ -5,8 +5,9 @@ import {
   ViewStyle,
 } from 'react-native';
 import {ReactNode} from 'react';
+import {TextInputProps} from 'react-native/Libraries/Components/TextInput/TextInput';
 
-export interface InputElementType {
+export interface InputElementType extends TextInputProps {
   disabled?: boolean;
   placeholder: string;
   keyboardType?: KeyboardTypeOptions;
@@ -32,6 +33,8 @@ export interface InputElementType {
   onRightIconPress?: () => void;
   borderColor?: string;
   password?: boolean;
+  viewPasswordIcon?: ReactNode;
+  hidePasswordIcon?: ReactNode;
 }
 
 export interface IRadioButtonProps {

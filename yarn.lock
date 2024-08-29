@@ -8113,32 +8113,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-ico-material-design@npm:^5.1.2":
-  version: 5.1.2
-  resolution: "react-native-ico-material-design@npm:5.1.2"
-  dependencies:
-    react-svg-main: ^4.0.1
-  checksum: 3ea208c9199212d6e7cba8c18b38e86cff1ba43d6c20cf6938aa02c4d114c223b9e3c362fe191a2b4dd988add164a772a66365530923eba71551f062bf2dfbd2
-  languageName: node
-  linkType: hard
-
 "react-native-select-dropdown@npm:^3.4.0":
   version: 3.4.0
   resolution: "react-native-select-dropdown@npm:3.4.0"
   checksum: c9f5c9b790e3f826326809d8fcc1daadcd5ce78a143756c04e5166908d039cd5fa29d6807a787bbb35fa54586dd434da788b7d608d3deb68a23aedcacec2153c
-  languageName: node
-  linkType: hard
-
-"react-native-svg@npm:^13.13.0":
-  version: 13.14.1
-  resolution: "react-native-svg@npm:13.14.1"
-  dependencies:
-    css-select: ^5.1.0
-    css-tree: ^1.1.3
-  peerDependencies:
-    react: "*"
-    react-native: "*"
-  checksum: 273f05f2cceabf09f3909f57108d10f56aeb38981146e5f7b72cdb8595fbfb524af891845d4240a629c2f91ed120ae603d9efd579f7fb88521769aec71811136
   languageName: node
   linkType: hard
 
@@ -8229,15 +8207,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-svg-main@npm:^4.0.1":
-  version: 4.0.2
-  resolution: "react-svg-main@npm:4.0.2"
-  dependencies:
-    react-native-svg: ^13.13.0
-  checksum: 0e2f51a1b4730f24a886daf55ed2c665b7ae21f47bb6fd053b1c8a98040d2618c2e6a9632865e68485d80ccc4a776afc9c2939fd9a997458ab87914c86edd8c2
-  languageName: node
-  linkType: hard
-
 "react-test-renderer@npm:18.3.1":
   version: 18.3.1
   resolution: "react-test-renderer@npm:18.3.1"
@@ -8285,7 +8254,6 @@ __metadata:
     prettier: 2.8.8
     react: 18.3.1
     react-native: 0.75.2
-    react-native-ico-material-design: ^5.1.2
     react-native-select-dropdown: ^3.4.0
     react-native-svg: ^15.6.0
     react-test-renderer: 18.3.1

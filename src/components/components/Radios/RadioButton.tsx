@@ -9,7 +9,6 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import Icon from 'react-native-ico-material-design';
 import {IRadioButtonProps} from '~src/types/interface.ts';
 
 const RadioButton: React.FC<IRadioButtonProps> = ({
@@ -73,7 +72,7 @@ const RadioButton: React.FC<IRadioButtonProps> = ({
                 ],
               },
             ]}>
-            <Icon name="check-symbol" size={checkIconSize} color={color} />
+            <Text style={{fontSize: 15, color: color}}>✔</Text>
           </Animated.View>
         ) : (
           <Animated.View

@@ -42,7 +42,6 @@ const FormDatePicker: FC<IFormDatePickerProps> = ({
     }
   }, [value]);
 
-  console.log(value);
   return (
     <View style={{flex: 1}}>
       <TouchableNativeFeedback

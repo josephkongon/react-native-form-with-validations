@@ -1,7 +1,6 @@
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC, ReactNode, useEffect, useState} from 'react';
 import {useColorScheme, View} from 'react-native';
 import SelectDropdown from 'react-native-select-dropdown';
-import Icon from 'react-native-ico-material-design';
 
 interface IDropdownSelectForm {
   items: IItems[];
@@ -15,6 +14,7 @@ interface IDropdownSelectForm {
   searchPlaceHolder?: string;
   disabled?: boolean;
   borderRadios?: string;
+  rightIcon?: ReactNode;
 }
 
 interface IItems {
@@ -34,6 +34,7 @@ const DropdownSelectForm: FC<IDropdownSelectForm> = ({
   searchPlaceHolder,
   disabled,
   borderRadios,
+  rightIcon,
 }) => {
   const colorScheme = useColorScheme();
   const [defaultSelect, setDefaultSelect] = useState<number | undefined>();
@@ -115,12 +116,7 @@ const DropdownSelectForm: FC<IDropdownSelectForm> = ({
           onSelect?.(e);
         }}
         renderDropdownIcon={() => {
-          return (
-            <Icon
-              name="drop-down-arrow"
-              color={colorScheme === 'dark' ? '#ffffff' : '#000000'}
-            />
-          );
+          return <>{rightIcon ? rightIcon : <></>}</>;
         }}
       />
     </View>

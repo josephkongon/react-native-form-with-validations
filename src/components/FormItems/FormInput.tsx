@@ -7,7 +7,6 @@ import {
   View,
 } from 'react-native';
 import {InputElementType} from '../../types/interface';
-import Icon from 'react-native-ico-material-design';
 
 const FormInput: FC<InputElementType> = ({
   placeholder,
@@ -30,6 +29,9 @@ const FormInput: FC<InputElementType> = ({
   borderColor,
   password,
   viewStyle,
+  hidePasswordIcon,
+  viewPasswordIcon,
+  ...props
 }) => {
   const colorScheme = useColorScheme();
   const [isSecure, setIsSecure] = React.useState(password);
@@ -78,12 +80,17 @@ const FormInput: FC<InputElementType> = ({
         maxLength={maxLength}
         onChangeText={onChangeText}
         onBlur={onBlur}
+        {...props}
       />
       {password ? (
         <TouchableOpacity
           onPress={() => setIsSecure(prevState => !prevState)}
           style={styles.rightIcon}>
-          {isSecure ? <Icon name="eye" /> : <Icon name="eye-slash" />}
+          {isSecure ? (
+            <>{viewPasswordIcon && viewPasswordIcon}</>
+          ) : (
+            <> {hidePasswordIcon && hidePasswordIcon}</>
+          )}
         </TouchableOpacity>
       ) : (
         <>
