@@ -50,6 +50,7 @@ function App(): React.JSX.Element {
                 type: 'email',
                 message: 'Please enter a valid email',
               },
+              {},
             ]}
             label={'Email'}>
             <FormInput placeholder="Email" />
@@ -73,7 +74,7 @@ function App(): React.JSX.Element {
 
           <FormItem
             name="age"
-            // rules={[{type: 'number', message: 'Age must be a number'}]}
+            rules={[{type: 'number', message: 'Age must be a number'}]}
             label={'Age'}>
             <FormInput placeholder="Age" />
           </FormItem>

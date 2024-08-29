@@ -1,79 +1,214 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# React Native Form Library
 
-# Getting Started
+This library provides a set of customizable form components for React Native, making it easier to build forms with
+various types of input fields and validation rules.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+## Components
 
-## Step 1: Start the Metro Server
+### `Form`
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+The `Form` component is the container for all form items. It manages form state, validation, and submission.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+- **Props:**
+    - `initialValues` (object): Initial values for the form fields.
+    - `onSubmit` (function): Callback function to handle form submission.
 
-```bash
-# using npm
-npm start
+### `FormItem`
 
-# OR using Yarn
-yarn start
+The `FormItem` component is used to wrap individual form fields. It handles validation rules and labels.
+
+- **Props:**
+    - `name` (string): The name of the form field. This should match the key in `initialValues`.
+    - `label` (string): The label for the form field.
+    - `rules` (array): Validation rules for the form field. Each rule is an object that may contain:
+        - `required` (boolean): Whether the field is required.
+        - `message` (string): The error message to display if the validation fails.
+        - `type` (string): The type of validation (e.g., 'email', 'number', 'url').
+        - `pattern` (RegExp): A regular expression for custom validation.
+
+### `FormInput`
+
+The `FormInput` component is a text input field.
+
+- **Props:**
+    - `placeholder` (string): Placeholder text for the input field.
+    - `password` (boolean): Whether the input is a password field.
+
+### `FormSwitch`
+
+The `FormSwitch` component is a switch toggle.
+
+- **Props:**
+    - `label` (string): The label for the switch.
+
+### `FormCheckbox`
+
+The `FormCheckbox` component is a checkbox input.
+
+- **Props:**
+    - `label` (string): The label for the checkbox.
+
+### `FormRadioGroup`
+
+The `FormRadioGroup` component is a group of radio buttons.
+
+- **Props:**
+    - `mode` (string): The display mode ('ios' or 'android').
+    - `options` (array): An array of options, where each option is an object with `label` and `value` properties.
+    - `label` (string): The label for the radio group.
+
+### `FormSlider`
+
+The `FormSlider` component is a slider input.
+
+- **Props:**
+    - `maximumValue` (number): The maximum value for the slider.
+    - `minimumValue` (number): The minimum value for the slider.
+    - `label` (string): The label for the slider.
+
+### `FormRangeSlider`
+
+The `FormRangeSlider` component is a range slider input.
+
+- **Props:**
+    - `min` (number): The minimum value for the range slider.
+    - `max` (number): The maximum value for the range slider.
+    - `step` (number): The step value for the range slider.
+
+### `FormPickerSelect`
+
+The `FormPickerSelect` component is a picker select input.
+
+- **Props:**
+    - `mode` (string): The display mode ('dialog' or 'dropdown').
+    - `items` (array): An array of items, where each item is an object with `label` and `value` properties.
+
+### `DropdownSelectForm`
+
+The `DropdownSelectForm` component is a dropdown select input.
+
+- **Props:**
+    - `search` (boolean): Whether to enable search functionality.
+    - `items` (array): An array of items, where each item is an object with `label` and `value` properties.
+    - `placeholder` (string): The placeholder text for the dropdown.
+
+### `FormMultiSelect`
+
+The `FormMultiSelect` component is a multi-select input.
+
+- **Props:**
+    - `items` (array): An array of items, where each item is an object with `label` and `value` properties.
+
+### `FormDatePicker`
+
+The `FormDatePicker` component is a date picker input.
+
+- **Props:**
+    - `label` (string): The label for the date picker.
+    - `mode` (string): The display mode ('date' or 'datetime').
+
+## Usage
+
+Here's a sample usage of the library:
+
+```javascript
+
+function App() {
+  const [initialValues, setInitialValues] = useState({
+    name: '',
+    email: '',
+    acceptTerms: true,
+    options: '',
+    date: '',
+    radios: '',
+  });
+
+  const handleSubmit = (values) => {
+    console.log({values});
+  };
+
+  return (
+    <SafeAreaView>
+      <ScrollView contentInsetAdjustmentBehavior="automatic">
+        <Form initialValues={initialValues} onSubmit={handleSubmit}>
+          <FormItem name="name" label={'Name'}>
+            <FormInput placeholder="Name"/>
+          </FormItem>
+          {/* Add other FormItem components here */}
+          <FormItem type="submit">
+            <Text>Submit</Text>
+          </FormItem>
+        </Form>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
+
+export default App;
+
+
 ```
 
-## Step 2: Start your Application
+#With validation
+-RegExp
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
+```
+        <FormItem
+            name="regexp"
+            label={'Regexp'}
+            rules={[
+              {
+                pattern: new RegExp(/^(\d+|\*)\.(\d+|\*)\.(\d+|\*)$/),
+                message: 'Patten does not match',
+              },
+            ]}>
+            <FormInput placeholder="5*" />
+        </FormItem>
 ```
 
-### For iOS
+-Number
 
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
+```
+       <FormItem
+            name="age"
+             rules={[{type: 'number', message: 'Age must be a number'}]}
+            label={'Age'}>
+            <FormInput placeholder="Age" />
+          </FormItem>
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+-URL
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+```
+      <FormItem
+            name="url"
+            label={'Url'}
+            rules={[{type: 'url', message: 'url is not valid'}]}>
+            <FormInput placeholder="Url" />
+          </FormItem>
+```
 
-## Step 3: Modifying your App
+-Email
 
-Now that you have successfully run the app, let's modify it.
+```
+ <FormItem
+            name="email"
+            rules={[
+              {required: false, message: 'Please enter your email'},
+              {
+                type: 'email',
+                message: 'Please enter a valid email',
+              },
+            ]}
+            label={'Email'}>
+            <FormInput placeholder="Email" />
+          </FormItem>
+```
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+-Password
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+```
+      <FormItem name="password" label={'Password'}>
+            <FormInput placeholder="Password" password={true} />
+          </FormItem>
+```

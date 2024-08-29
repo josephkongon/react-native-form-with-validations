@@ -6,10 +6,12 @@ import {
   TextStyle,
   TouchableOpacity,
   View,
+  ViewStyle,
 } from 'react-native';
 import {ErrorMessage, Field, useFormikContext} from 'formik';
 
 interface IFormItemProps {
+  submitButtonStyle?: StyleProp<ViewStyle>;
   name?: string;
   required?: boolean;
   errorMessage?: string;
@@ -34,7 +36,7 @@ const FormItem: FC<IFormItemProps> = ({
   type,
   label,
   labelStyle,
-
+  submitButtonStyle,
   rules = [],
 }) => {
   const useForm = useFormikContext();
@@ -49,7 +51,7 @@ const FormItem: FC<IFormItemProps> = ({
 
   if (type === 'submit') {
     return (
-      <View style={styles.formItem}>
+      <View style={[styles.formItem, submitButtonStyle]}>
         <Field name="submit">
           {({form}: any) => (
             <TouchableOpacity

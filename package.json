@@ -1,7 +1,9 @@
 {
-  "name": "reactNativeForms",
-  "version": "0.0.1",
-  "private": true,
+  "name": "react-native-easy-forms",
+  "version": "1.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
@@ -9,6 +11,11 @@
     "start": "react-native start",
     "test": "jest"
   },
+  "keywords": [
+    "react-native",
+    "react-native-form",
+    "form-validation"
+  ],
   "dependencies": {
     "@react-native-community/checkbox": "^0.5.17",
     "@react-native-community/datetimepicker": "^8.2.0",
@@ -19,8 +26,7 @@
     "react": "18.3.1",
     "react-native": "0.75.2",
     "react-native-svg": "^15.6.0",
-    "rn-range-slider": "^2.2.2",
-    "yup": "^1.4.0"
+    "rn-range-slider": "^2.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
@@ -43,5 +49,9 @@
   "engines": {
     "node": ">=18"
   },
-  "packageManager": "yarn@3.6.4"
+  "packageManager": "yarn@3.6.4",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/josephkongon/react-native-form-with-validations"
+  }
 }
