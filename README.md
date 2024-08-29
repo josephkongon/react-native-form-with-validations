@@ -3,6 +3,11 @@
 This library provides a set of customizable form components for React Native, making it easier to build forms with
 various types of input fields and validation rules.
 
+## Installation
+
+yarn add react-native-easy-forms
+npm install react-native-easy-forms
+
 ## Components
 
 ### `Form`
@@ -149,7 +154,8 @@ export default App;
 
 ```
 
-#With validation
+## With validation
+
 -RegExp
 
 ```
