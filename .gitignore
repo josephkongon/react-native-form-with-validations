@@ -33,7 +33,8 @@ local.properties
 .cxx/
 *.keystore
 !debug.keystore
-
+index.js
+App.tsx
 # node.js
 #
 android

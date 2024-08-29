@@ -10,7 +10,7 @@ import {SafeAreaView, ScrollView, Text} from 'react-native';
 import Form from './src/components/Form.tsx';
 import FormItem from './src/components/FormItems/FormItem.tsx';
 import FormInput from './src/components/FormItems/FormInput.tsx';
-import {FormSwitch} from './src/components/FormItems/FormSwitch.tsx';
+import {FormSwitch} from '~src/components/FormItems';
 import FormDatePicker from './src/components/FormItems/FormDatePicker.tsx';
 import FormCheckbox from './src/components/FormItems/FormCheckbox.tsx';
 import FormRadioGroup from './src/components/FormItems/FormRadioGroup.tsx';
