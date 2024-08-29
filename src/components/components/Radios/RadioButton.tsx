@@ -43,6 +43,7 @@ const RadioButton: React.FC<IRadioButtonProps> = ({
   return (
     <TouchableOpacity
       style={styles.container}
+      //@ts-ignore
       onPress={onPress}
       activeOpacity={0.7}>
       <View
