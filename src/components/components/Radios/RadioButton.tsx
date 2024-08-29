@@ -9,7 +9,7 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
-import {IRadioButtonProps} from '~src/types/interface.ts';
+import {IRadioButtonProps} from './src/types/interface.ts';
 
 const RadioButton: React.FC<IRadioButtonProps> = ({
   selected = false,

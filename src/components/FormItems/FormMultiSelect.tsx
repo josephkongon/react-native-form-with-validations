@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 import {View} from 'react-native';
-import MultiSelect from '~src/components/components/MultiSelect';
+import MultiSelect from '../components/MultiSelect';
 
 interface Items {
   label: string;

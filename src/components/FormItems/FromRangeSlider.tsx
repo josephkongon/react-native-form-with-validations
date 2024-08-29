@@ -2,11 +2,11 @@
 import React, {FC, useCallback} from 'react';
 import {StyleProp, TextStyle, View, ViewStyle} from 'react-native';
 import RangeSlider, {SliderProps} from 'rn-range-slider';
-import Thumb from '~src/components/components/RangeSlider/Thumb.tsx';
-import Rail from '~src/components/components/RangeSlider/Rail.tsx';
-import RailSelected from '~src/components/components/RangeSlider/RailSelected.tsx';
-import Label from '~src/components/components/RangeSlider/Label.tsx';
-import Notch from '~src/components/components/RangeSlider/Notch.tsx';
+import Thumb from '../components/RangeSlider/Thumb.tsx';
+import Rail from '../components/RangeSlider/Rail.tsx';
+import RailSelected from '../components/RangeSlider/RailSelected.tsx';
+import Notch from '../components/RangeSlider/Notch.tsx';
+import Label from '../components/RangeSlider/Label.tsx';
 
 interface IFormRangeSlider
   extends Omit<

@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import {View} from 'react-native';
 import RadioButton from './RadioButton.tsx';
-import {IRadioButtonProps} from '~src/types/interface.ts';
+import {IRadioButtonProps} from './src/types/interface.ts';
 
 interface IRadiosGroupProps extends IRadioButtonProps {
   options: Array<{label: string; value: string}>;

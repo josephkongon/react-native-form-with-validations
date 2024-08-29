@@ -7,19 +7,21 @@
 
 import React, {useState} from 'react';
 import {SafeAreaView, ScrollView, Text} from 'react-native';
-import Form from './src/components/Form.tsx';
-import FormItem from './src/components/FormItems/FormItem.tsx';
-import FormInput from './src/components/FormItems/FormInput.tsx';
-import {FormSwitch} from '~src/components/FormItems';
-import FormDatePicker from './src/components/FormItems/FormDatePicker.tsx';
-import FormCheckbox from './src/components/FormItems/FormCheckbox.tsx';
-import FormRadioGroup from './src/components/FormItems/FormRadioGroup.tsx';
-import FormSlider from './src/components/FormItems/FormSlider.tsx';
-import FormPickerSelect from './src/components/FormItems/FormPickerSelect.tsx';
-import DropdownSelectForm from '~src/components/FormItems/FromDropdownSelect.tsx';
-import FormRangeSlider from '~src/components/FormItems/FromRangeSlider.tsx';
-import FormMultiSelect from '~src/components/FormItems/FormMultiSelect.tsx';
-import {items} from '~src/types/constands.ts';
+import {
+  DropdownSelectForm,
+  Form,
+  FormCheckbox,
+  FormDatePicker,
+  FormInput,
+  FormItem,
+  FormMultiSelect,
+  FormPickerSelect,
+  FormRadioGroup,
+  FormRangeSlider,
+  FormSlider,
+  FormSwitch,
+} from './src/components';
+import {items} from './src/types/constands.ts';
 
 function App(): React.JSX.Element {
   const [initialValues, setInitialValues] = useState({
