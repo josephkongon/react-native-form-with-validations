@@ -159,6 +159,43 @@ function App() {
 }
 
 export default App;
+```
+
+###More examples
+
+```javascript
+import React from 'react';
+import {SafeAreaView, Text} from 'react-native';
+
+import {Form, FormInput, FormItem} from 'react-native-easy-forms';
+
+function App() {
+  const handleSubmit = (values: any) => {
+    console.log({values});
+  };
+
+  return (
+    <SafeAreaView>
+      <Form initialValues={{name: '', email: ''}} onSubmit={handleSubmit}>
+        <FormItem name="name" label="Name">
+          <FormInput placeholder="Enter your name"/>
+        </FormItem>
+        <FormItem name="email" label="Email" rules={[{type: 'email'}]}>
+          <FormInput placeholder="Enter your Email"/>
+        </FormItem>
+        <FormItem name="Url" label="Email" rules={[{type: 'url'}]}>
+          <FormInput placeholder="Enter your Email"/>
+        </FormItem>
+        <FormItem type="submit" label="Name">
+          <Text>Submit</Text>
+        </FormItem>
+      </Form>
+    </SafeAreaView>
+  );
+}
+
+export default App;
+
 
 
 ```
@@ -167,63 +204,63 @@ export default App;
 
 -RegExp
 
-```
+```javascript
         <FormItem
-            name="regexp"
-            label={'Regexp'}
-            rules={[
-              {
-                pattern: new RegExp(/^(\d+|\*)\.(\d+|\*)\.(\d+|\*)$/),
-                message: 'Patten does not match',
-              },
-            ]}>
-            <FormInput placeholder="5*" />
-        </FormItem>
+  name="regexp"
+  label={'Regexp'}
+  rules={[
+    {
+      pattern: new RegExp(/^(\d+|\*)\.(\d+|\*)\.(\d+|\*)$/),
+      message: 'Patten does not match',
+    },
+  ]}>
+  <FormInput placeholder="5*"/>
+</FormItem>
 ```
 
 -Number
 
-```
+```javascript
        <FormItem
-            name="age"
-             rules={[{type: 'number', message: 'Age must be a number'}]}
-            label={'Age'}>
-            <FormInput placeholder="Age" />
-          </FormItem>
+  name="age"
+  rules={[{type: 'number', message: 'Age must be a number'}]}
+  label={'Age'}>
+  <FormInput placeholder="Age"/>
+</FormItem>
 ```
 
 -URL
 
-```
+```javascript
       <FormItem
-            name="url"
-            label={'Url'}
-            rules={[{type: 'url', message: 'url is not valid'}]}>
-            <FormInput placeholder="Url" />
-          </FormItem>
+  name="url"
+  label={'Url'}
+  rules={[{type: 'url', message: 'url is not valid'}]}>
+  <FormInput placeholder="Url"/>
+</FormItem>
 ```
 
 -Email
 
-```
+```javascript
  <FormItem
-            name="email"
-            rules={[
-              {required: false, message: 'Please enter your email'},
-              {
-                type: 'email',
-                message: 'Please enter a valid email',
-              },
-            ]}
-            label={'Email'}>
-            <FormInput placeholder="Email" />
-          </FormItem>
+  name="email"
+  rules={[
+    {required: false, message: 'Please enter your email'},
+    {
+      type: 'email',
+      message: 'Please enter a valid email',
+    },
+  ]}
+  label={'Email'}>
+  <FormInput placeholder="Email"/>
+</FormItem>
 ```
 
 -Password
 
-```
+```javascript
       <FormItem name="password" label={'Password'}>
-            <FormInput placeholder="Password" password={true} />
-          </FormItem>
+  <FormInput placeholder="Password" password={true}/>
+</FormItem>
 ```
