@@ -5,8 +5,17 @@ various types of input fields and validation rules.
 
 ## Installation
 
-yarn add react-native-easy-forms
+### Using npm
+
+```bash
 npm install react-native-easy-forms
+````
+
+### Using Yarn
+
+```bash
+yarn add react-native-easy-forms
+````
 
 ## Components
 
