@@ -1,11 +1,42 @@
 import React from 'react';
-import {StyleSheet, Switch, Text, View} from 'react-native';
+import {
+  StyleProp,
+  StyleSheet,
+  Switch,
+  Text,
+  TextStyle,
+  View,
+  ViewStyle,
+} from 'react-native';
 
-export const Checkbox = ({label, value, onValueChange}: any) => {
+interface FormSwitchProps {
+  label?: string;
+  value?: boolean;
+  onValueChange?: (value: boolean) => void;
+  viewStyle?: StyleProp<ViewStyle>;
+  textStyle?: StyleProp<TextStyle>;
+  switchStyle?: StyleProp<ViewStyle>;
+  disabled?: boolean;
+}
+
+export const FormSwitch = ({
+  value,
+  label,
+  onValueChange,
+  viewStyle,
+  switchStyle,
+  textStyle,
+  disabled,
+}: FormSwitchProps) => {
   return (
-    <View style={styles.checkboxContainer}>
-      <Text>{label}</Text>
-      <Switch value={value} onValueChange={onValueChange} />
+    <View style={[styles.checkboxContainer, viewStyle]}>
+      {label && <Text style={[textStyle]}>{label}</Text>}
+      <Switch
+        disabled={disabled}
+        style={[switchStyle]}
+        value={value}
+        onValueChange={onValueChange}
+      />
     </View>
   );
 };
