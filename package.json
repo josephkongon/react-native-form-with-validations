@@ -1,6 +1,6 @@
 {
   "name": "react-native-easy-forms",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "publishConfig": {
     "access": "public"
   },
@@ -15,8 +15,26 @@
   "keywords": [
     "react-native",
     "react-native-form",
-    "form-validation"
+    "form-validation",
+    "react-native-forms",
+    "form-builder",
+    "react-native-ui",
+    "form-handling",
+    "form-library",
+    "input-validation",
+    "react-native-input",
+    "react-native-component",
+    "form-state-management",
+    "form-hooks",
+    "form-handling",
+    "form-field",
+    "form-utils",
+    "react-native-validation",
+    "form-controls",
+    "form-input",
+    "react-native-form-library"
   ],
+
   "dependencies": {
     "@react-native-community/checkbox": "^0.5.17",
     "@react-native-community/datetimepicker": "^8.2.0",

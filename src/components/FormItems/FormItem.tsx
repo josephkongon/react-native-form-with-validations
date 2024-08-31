@@ -13,12 +13,12 @@ import {ErrorMessage, Field, useFormikContext} from 'formik';
 interface IFormItemProps {
   submitButtonStyle?: StyleProp<ViewStyle>;
   name?: string;
-  required?: boolean;
-  errorMessage?: string;
   children: ReactNode;
   type?: 'submit';
   label?: string;
   labelStyle?: StyleProp<TextStyle>;
+  errorMessageTextStyle?: StyleProp<TextStyle>;
+  errorMessageViewStyle?: StyleProp<ViewStyle>;
   rules?: Array<{
     required?: boolean;
     message?: string;
@@ -38,6 +38,8 @@ const FormItem: FC<IFormItemProps> = ({
   labelStyle,
   submitButtonStyle,
   rules = [],
+  errorMessageTextStyle,
+  errorMessageViewStyle,
 }) => {
   const useForm = useFormikContext();
 
@@ -177,7 +179,13 @@ const FormItem: FC<IFormItemProps> = ({
                 },
               })}
               <ErrorMessage name={name}>
-                {msg => <Text style={styles.errorText}>{msg}</Text>}
+                {msg => (
+                  <View style={[errorMessageViewStyle]}>
+                    <Text style={[styles.errorText, errorMessageTextStyle]}>
+                      {msg}
+                    </Text>
+                  </View>
+                )}
               </ErrorMessage>
             </View>
           )}

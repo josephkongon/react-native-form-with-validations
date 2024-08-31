@@ -3,6 +3,16 @@
 This library provides a set of customizable form components for React Native, making it easier to build forms with
 various types of input fields and validation rules.
 
+A powerful and flexible form library for React Native that simplifies form handling, validation, and state management.
+
+## Features
+
+- Easy form validation for React Native
+- Simple integration with existing projects
+- Support for various input types
+- Customizable form fields and validation rules
+- Works seamlessly with React Native hooks
+
 ## Installation
 
 ### Using npm
@@ -205,7 +215,7 @@ export default App;
 -RegExp
 
 ```javascript
-        <FormItem
+    <FormItem
   name="regexp"
   label={'Regexp'}
   rules={[
@@ -221,7 +231,7 @@ export default App;
 -Number
 
 ```javascript
-       <FormItem
+    <FormItem
   name="age"
   rules={[{type: 'number', message: 'Age must be a number'}]}
   label={'Age'}>
@@ -232,7 +242,7 @@ export default App;
 -URL
 
 ```javascript
-      <FormItem
+    <FormItem
   name="url"
   label={'Url'}
   rules={[{type: 'url', message: 'url is not valid'}]}>
@@ -243,7 +253,7 @@ export default App;
 -Email
 
 ```javascript
- <FormItem
+     <FormItem
   name="email"
   rules={[
     {required: false, message: 'Please enter your email'},
@@ -260,7 +270,72 @@ export default App;
 -Password
 
 ```javascript
-      <FormItem name="password" label={'Password'}>
+    <FormItem name="password" label={'Password'}>
   <FormInput placeholder="Password" password={true}/>
 </FormItem>
 ```
+
+# Custom Component Integration with Form Library
+
+## Overview
+
+This document explains how to create custom components that integrate seamlessly with our form library by using specific
+callback functions. The form library manages form inputs and updates form state using the `setFieldValue` method. When
+building custom components, you can utilize the callback functions described below to ensure that your components work
+effectively with the form.
+
+## Prerequisites
+
+Before integrating your custom components, ensure you have:
+
+- Basic understanding of React and TypeScript.
+- Familiarity with the form library's API, particularly the `setFieldValue` method.
+
+## Purpose
+
+When creating a custom component that interacts with the form, you may need to use one or more of the following callback
+functions. These functions are designed to update the form state in response to user input:
+
+- **`onChangeText(text: string)`**:  
+  Use this callback for text input fields. It passes the entered text and updates the form state using the
+  `setFieldValue` method.
+
+- **`onValueChange(value: boolean)`**:  
+  This callback is suitable for toggle switches or checkboxes. It updates the form state with a boolean value.
+
+- **`onSelect(value: string)`**:  
+  Use this callback when selecting a single item from a list or dropdown. It updates the form state with the selected
+  value.
+
+- **`onChange(value: any)`**:  
+  This generic callback can be used for various input types. It accepts any value type and updates the form state
+  accordingly.
+
+- **`onSelectedItemsChange(value: any)`**:  
+  This callback is ideal for multi-select components where multiple items can be selected. It updates the form state
+  with the selected items.
+
+## How to Use
+
+When implementing your custom component, ensure it accepts one or more of these callbacks as props. The form library
+will pass these functions to your component, allowing it to update the form state seamlessly.
+
+### Example
+
+Here's a basic example of a custom component using the `onChangeText` callback:
+
+```typescript
+interface CustomInputProps {
+  onChangeText: (text: string) => void;
+  value: string;
+}
+
+const CustomInput: React.FC<CustomInputProps> = ({ onChangeText, value }) => {
+  return (
+    <input
+      type="text"
+      value={value}
+      onChange={(e) => onChangeText(e.target.value)}
+    />
+  );
+};

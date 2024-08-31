@@ -6,7 +6,7 @@
  */
 
 import React, {useState} from 'react';
-import {SafeAreaView, ScrollView, Text} from 'react-native';
+import {SafeAreaView, ScrollView, Text, View} from 'react-native';
 import {
   DropdownSelectForm,
   Form,
@@ -40,14 +40,14 @@ function App(): React.JSX.Element {
     <SafeAreaView>
       <ScrollView contentInsetAdjustmentBehavior="automatic">
         <Form initialValues={initialValues} onSubmit={handleSubmit}>
-          <FormItem name="name" label={'Name'}>
+          <FormItem name="name" label={'Name'} rules={[{required: true}]}>
             <FormInput placeholder="Name" />
           </FormItem>
 
           <FormItem
             name="email"
             rules={[
-              {required: false, message: 'Please enter your email'},
+              {required: true, message: 'Please enter your email'},
               {
                 type: 'email',
                 message: 'Please enter a valid email',
@@ -58,7 +58,10 @@ function App(): React.JSX.Element {
             <FormInput placeholder="Email" />
           </FormItem>
 
-          <FormItem name="password" label={'Password'}>
+          <FormItem
+            rules={[{required: true}]}
+            name="password"
+            label={'Password'}>
             <FormInput placeholder="Password" password={true} />
           </FormItem>
 
@@ -152,7 +155,18 @@ function App(): React.JSX.Element {
             <FormDatePicker label={'Pick a date'} mode={'date'} />
           </FormItem>
           <FormItem type="submit">
-            <Text>Submit</Text>
+            <View
+              style={{
+                width: 250,
+                height: 50,
+                backgroundColor: 'blue',
+                borderRadius: 10,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+              <Text style={{color: '#fff'}}>Submit</Text>
+            </View>
           </FormItem>
         </Form>
         {/*<FormDatePicker />*/}
