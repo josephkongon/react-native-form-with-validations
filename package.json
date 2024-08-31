@@ -1,6 +1,6 @@
 {
   "name": "react-native-easy-forms",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "publishConfig": {
     "access": "public"
   },
@@ -34,7 +34,6 @@
     "form-input",
     "react-native-form-library"
   ],
-
   "dependencies": {
     "@react-native-community/checkbox": "^0.5.17",
     "@react-native-community/datetimepicker": "^8.2.0",
