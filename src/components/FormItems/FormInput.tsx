@@ -86,11 +86,7 @@ const FormInput: FC<InputElementType> = ({
         <TouchableOpacity
           onPress={() => setIsSecure(prevState => !prevState)}
           style={styles.rightIcon}>
-          {isSecure ? (
-            <>{viewPasswordIcon && viewPasswordIcon}</>
-          ) : (
-            <> {hidePasswordIcon && hidePasswordIcon}</>
-          )}
+          {isSecure ? viewPasswordIcon : hidePasswordIcon}
         </TouchableOpacity>
       ) : (
         <>

@@ -1,6 +1,6 @@
-import React, {FC, ReactNode} from 'react';
-import {StyleSheet, View} from 'react-native';
-import {Formik, FormikHelpers, FormikProps} from 'formik';
+import React, {FC, ReactNode, useContext, useEffect} from 'react';
+import {StyleProp, View, ViewStyle} from 'react-native';
+import {Formik, FormikContext, FormikHelpers, FormikProps} from 'formik';
 import {FormikConfig} from 'formik/dist/types';
 
 interface IFormProps
@@ -8,16 +8,20 @@ interface IFormProps
   children: ReactNode;
   onSubmit: (values: any, formikHelpers: FormikHelpers<any>) => void;
   initialValues: any;
+  style?: StyleProp<ViewStyle>;
+  formWatch?: (values: any) => void;
 }
 
 const Form: FC<IFormProps> = ({
   children,
   onSubmit,
   initialValues,
+  style,
+  formWatch,
   ...FormConfig
 }) => {
   return (
-    <View style={styles.formContainer}>
+    <View style={style}>
       <Formik initialValues={initialValues} onSubmit={onSubmit} {...FormConfig}>
         {(formikProps: FormikProps<any>) => (
           <View>
@@ -28,6 +32,7 @@ const Form: FC<IFormProps> = ({
               }
               return child;
             })}
+            <FormWatch callback={formWatch} />
           </View>
         )}
       </Formik>
@@ -35,10 +40,15 @@ const Form: FC<IFormProps> = ({
   );
 };
 
-const styles = StyleSheet.create({
-  formContainer: {
-    padding: 20,
-  },
-});
+const FormWatch = ({callback}: {callback?: (i: any) => void}) => {
+  const formik = useContext(FormikContext);
+
+  useEffect(() => {
+    if (formik) {
+      callback?.(formik.values);
+    }
+  }, [formik.values, callback]);
+  return null;
+};
 
 export default Form;

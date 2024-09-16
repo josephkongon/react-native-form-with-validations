@@ -53,7 +53,7 @@ const FormItem: FC<IFormItemProps> = ({
 
   if (type === 'submit') {
     return (
-      <View style={[styles.formItem, submitButtonStyle]}>
+      <View style={[styles.buttonSubmit, submitButtonStyle]}>
         <Field name="submit">
           {({form}: any) => (
             <TouchableOpacity
@@ -93,8 +93,20 @@ const FormItem: FC<IFormItemProps> = ({
           }
         }
 
-        if (rule.type === 'string' && value.length < (rule.min || 0)) {
+        if (
+          rule.type !== 'object' &&
+          rule.min &&
+          value.length < (rule.min || 0)
+        ) {
           return rule.message || `Minimum length is ${rule.min}`;
+        }
+
+        if (
+          rule.type !== 'object' &&
+          rule.max &&
+          value.length > (rule.max || 0)
+        ) {
+          return rule.message || `Max length is ${rule.max}`;
         }
 
         if (rule.type === 'number') {
@@ -198,6 +210,12 @@ const FormItem: FC<IFormItemProps> = ({
 };
 
 const styles = StyleSheet.create({
+  buttonSubmit: {
+    marginBottom: 20,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   formItem: {
     marginBottom: 20,
   },

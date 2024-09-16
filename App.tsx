@@ -36,10 +36,17 @@ function App(): React.JSX.Element {
   const handleSubmit = (values: any) => {
     console.log({values});
   };
+  const onChange = (value: string) => {
+    console.log(value);
+  };
+
   return (
     <SafeAreaView>
       <ScrollView contentInsetAdjustmentBehavior="automatic">
-        <Form initialValues={initialValues} onSubmit={handleSubmit}>
+        <Form
+          formWatch={onChange}
+          initialValues={initialValues}
+          onSubmit={handleSubmit}>
           <FormItem name="name" label={'Name'} rules={[{required: true}]}>
             <FormInput placeholder="Name" />
           </FormItem>
