@@ -73,6 +73,9 @@ const FormItem: FC<IFormItemProps> = ({
       return undefined;
     }
 
+    const min = rules.find(rule => !!rule.min)?.min;
+    const max = rules.find(rule => !!rule.max)?.max;
+
     for (const rule of rules) {
       if (rule.required && !value) {
         return rule.message || 'This field is required';
@@ -93,45 +96,24 @@ const FormItem: FC<IFormItemProps> = ({
           }
         }
 
-        if (
-          rule.type !== 'object' &&
-          rule.min &&
-          value.length < (rule.min || 0)
-        ) {
-          return rule.message || `Minimum length is ${rule.min}`;
-        }
-
-        if (
-          rule.type !== 'object' &&
-          rule.max &&
-          value.length > (rule.max || 0)
-        ) {
-          return rule.message || `Max length is ${rule.max}`;
-        }
-
         if (rule.type === 'number') {
           const numericValue = parseFloat(value);
           if (isNaN(numericValue)) {
             return rule.message || 'Value must be a number';
           }
           if (
-            numericValue < (rule.min || -Infinity) ||
-            numericValue > (rule.max || Infinity)
+            numericValue < (min || -Infinity) ||
+            numericValue > (max || Infinity)
           ) {
-            return (
-              rule.message ||
-              `Value must be between ${rule.min} and ${rule.max}`
-            );
+            return rule.message || `Value must be between ${min} and ${max}`;
           }
         }
         if (rule.type === 'array' && Array.isArray(value)) {
-          if (value.length < (rule.min || 0)) {
-            return rule.message || `Array must have at least ${rule.min} items`;
+          if (value.length < (min || 0)) {
+            return rule.message || `Array must have at least ${min} items`;
           }
-          if (value.length > (rule.max || Infinity)) {
-            return (
-              rule.message || `Array must have no more than ${rule.max} items`
-            );
+          if (value.length > (max || Infinity)) {
+            return rule.message || `Array must have no more than ${max} items`;
           }
         }
 
@@ -141,13 +123,11 @@ const FormItem: FC<IFormItemProps> = ({
           !Array.isArray(value)
         ) {
           const keys = Object.keys(value);
-          if (keys.length < (rule.min || 0)) {
-            return rule.message || `Object must have at least ${rule.min} keys`;
+          if (keys.length < (min || 0)) {
+            return rule.message || `Object must have at least ${min} keys`;
           }
-          if (keys.length > (rule.max || Infinity)) {
-            return (
-              rule.message || `Object must have no more than ${rule.max} keys`
-            );
+          if (keys.length > (max || Infinity)) {
+            return rule.message || `Object must have no more than ${max} keys`;
           }
         }
 
@@ -180,6 +160,9 @@ const FormItem: FC<IFormItemProps> = ({
                   form.setFieldValue(name, value);
                 },
                 onChange: (value: any) => {
+                  if (value.nativeEvent.text) {
+                    return;
+                  }
                   form.setFieldValue(name, value);
                 },
                 onSelectedItemsChange: (value: any) => {

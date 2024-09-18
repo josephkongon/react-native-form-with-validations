@@ -1,4 +1,4 @@
-import React, {FC, ReactNode, useContext, useEffect} from 'react';
+import React, {FC, ReactNode, useContext, useEffect, useRef} from 'react';
 import {StyleProp, View, ViewStyle} from 'react-native';
 import {Formik, FormikContext, FormikHelpers, FormikProps} from 'formik';
 import {FormikConfig} from 'formik/dist/types';
@@ -42,12 +42,15 @@ const Form: FC<IFormProps> = ({
 
 const FormWatch = ({callback}: {callback?: (i: any) => void}) => {
   const formik = useContext(FormikContext);
+  const prevValuesRef = useRef(formik?.values);
 
   useEffect(() => {
-    if (formik) {
+    if (formik && formik.values !== prevValuesRef.current) {
+      prevValuesRef.current = formik.values;
       callback?.(formik.values);
     }
-  }, [formik.values, callback]);
+  }, [formik?.values, callback]);
+
   return null;
 };
 

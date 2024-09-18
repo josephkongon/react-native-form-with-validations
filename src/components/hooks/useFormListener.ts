@@ -1,4 +1,4 @@
-import {useContext, useEffect} from 'react';
+import {useContext, useEffect, useRef} from 'react';
 import {FormikContext} from 'formik';
 
 /**
@@ -7,12 +7,14 @@ import {FormikContext} from 'formik';
  */
 const useFormListener = (callback: (values: any) => void) => {
   const formik = useContext(FormikContext);
+  const prevValuesRef = useRef(formik?.values);
 
   useEffect(() => {
-    if (formik) {
-      callback(formik.values);
+    if (formik && formik.values !== prevValuesRef.current) {
+      prevValuesRef.current = formik.values;
+      callback?.(formik.values);
     }
-  }, [formik.values, callback]);
+  }, [formik?.values, callback]);
 };
 
 export default useFormListener;

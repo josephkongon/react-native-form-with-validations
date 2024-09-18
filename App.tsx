@@ -37,7 +37,7 @@ function App(): React.JSX.Element {
     console.log({values});
   };
   const onChange = (value: string) => {
-    console.log(value);
+    console.log('form watch', value);
   };
 
   return (
