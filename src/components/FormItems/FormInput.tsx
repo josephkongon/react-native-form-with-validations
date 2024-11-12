@@ -41,7 +41,7 @@ const FormInput: FC<InputElementType> = ({
       style={[
         styles.container,
         {
-          height,
+          height: height || 50,
           width,
           gap: 5,
           borderColor: borderColor
@@ -69,7 +69,7 @@ const FormInput: FC<InputElementType> = ({
         style={[
           styles.input,
           {
-            height: height,
+            height: height || 50,
             width: width,
             paddingLeft: leftIcon ? 40 : 10,
             paddingRight: rightIcon ? 40 : 10,
