@@ -160,7 +160,7 @@ const FormItem: FC<IFormItemProps> = ({
                   form.setFieldValue(name, value);
                 },
                 onChange: (value: any) => {
-                  if (value.nativeEvent.text) {
+                  if (value?.nativeEvent?.text) {
                     return;
                   }
                   form.setFieldValue(name, value);
